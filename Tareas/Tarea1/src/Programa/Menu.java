@@ -52,7 +52,7 @@ public class Menu {
                            } else if (i >= totalMeses) {
                                System.out.println("Mes no encontrado. Intente nuevamente:");
                                mes = scn.nextLine().toUpperCase();
-                               i = -1; // Reinicia la búsqueda si se pasa
+                               i = -1;
                            }
                        } while (check == true);
                        youtube = new RedSocial("VISUALIZACIONES","YOUTUBE");
