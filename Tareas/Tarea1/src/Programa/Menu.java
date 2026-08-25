@@ -25,6 +25,7 @@ public class Menu {
            System.out.println("4. Promedio de Me Gusta de las 3 redes");
            System.out.println("5. Salir del Programa");
            opc = scn.nextInt();
+           scn.nextLine();
 
            switch (opc){
                case 1:
@@ -42,11 +43,16 @@ public class Menu {
                        int cuenta = 0;
                        int i=-1;
                        boolean check = true;
+                       int totalMeses = Redrapidames.getMes().size();
                        do {
                             i++;
-                           if (Objects.equals(mes,Redrapidames.getMes().get(i))){
+                           if (i < totalMeses && Objects.equals(mes, Redrapidames.getMes().get(i))) {
                                cuenta = i;
-                               check=false;
+                               check = false;
+                           } else if (i >= totalMeses) {
+                               System.out.println("Mes no encontrado. Intente nuevamente:");
+                               mes = scn.nextLine().toUpperCase();
+                               i = -1; // Reinicia la búsqueda si se pasa
                            }
                        } while (check == true);
                        youtube = new RedSocial("VISUALIZACIONES","YOUTUBE");

@@ -13,7 +13,7 @@ public class Lector {
     }
     public void leer(){
         try {
-            FileInputStream tabla = new FileInputStream("Recursos/datos_redes_sociales (1).csv");
+            FileInputStream tabla = new FileInputStream("Tareas/Tarea1/Recursos/datos_redes_sociales (1).csv");
             BufferedReader lector = new BufferedReader(new InputStreamReader(tabla));
             String linea;
             for ( int i= 0; i !=19; i++){
