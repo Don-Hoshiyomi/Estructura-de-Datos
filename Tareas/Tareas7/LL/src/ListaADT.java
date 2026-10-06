@@ -78,13 +78,19 @@ public class ListaADT<T> {
         }
     }
 
-    public void agregar_despues_de(T parametro,T Valor){
+    public void agregardespuesde(T parametro, T Valor){
         if (head != null){
-            while (cursor.getDatos() != parametro){
+            while (cursor.getDatos() != parametro && cursor != null){
                 cursor = cursor.getSiguiente();
             }
+            if (cursor != null){
             cursor.setSiguiente(new NodoADT<>(Valor));
             cursor = head;
+            }
+            else {
+                System.out.println("El parametro no existe en el ciclo");
+                cursor=head;
+            }
         }
         else
         {
@@ -95,7 +101,7 @@ public class ListaADT<T> {
     public void buscar(T valor){
         if (head != null){
             int i = 0;
-            while (cursor.getDatos() != valor){
+            while (cursor.getDatos() != valor && cursor != null){
                 i += 1;
                 cursor = cursor.getSiguiente();
             }
@@ -120,11 +126,16 @@ public class ListaADT<T> {
 
     public void eliminar_ultimo(){
         if (head != null){
-            while (cursor.getSiguiente().getSiguiente() != null){
-                cursor = cursor.getSiguiente();
+            if(head.getSiguiente() != null){
+                while (cursor.getSiguiente().getSiguiente() != null){
+                    cursor = cursor.getSiguiente();
+                }
+                cursor.setSiguiente(null);
+                cursor = head;
             }
-            cursor.setSiguiente(null);
-            cursor = head;
+            else {
+                head = null;
+            }
         }
         else
         {
@@ -150,7 +161,7 @@ public class ListaADT<T> {
     public void actualizar(T valor_a_cambiar,T valor){
         if (head != null){
             int i = 0;
-            while (cursor.getDatos() != valor_a_cambiar){
+            while (cursor.getDatos() != valor_a_cambiar && cursor != null){
                 cursor = cursor.getSiguiente();
             }
             cursor.setDatos(valor);
